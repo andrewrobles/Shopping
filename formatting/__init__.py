@@ -1,1 +1,1 @@
-from .formatting import encode, _to_binary_arr
+from .formatting import encode, _get_decimal_digits

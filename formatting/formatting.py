@@ -3,7 +3,7 @@ def encode(input_text):
 
     return ascii_number
 
-def _to_binary_arr(input_number):
+def _get_decimal_digits(input_number):
     pass
 
 result = encode('A')

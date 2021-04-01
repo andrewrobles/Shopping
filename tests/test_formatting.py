@@ -1,6 +1,6 @@
 import unittest
 
-from formatting import encode, _to_binary_arr
+from formatting import encode, _get_decimal_digits
 
 class TestEncode(unittest.TestCase):
 
@@ -92,13 +92,13 @@ class TestEncode(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-class TestToBinaryArr(unittest.TestCase):
+class TestGetDecimalDigits(unittest.TestCase):
+    
+    def test_number_123(self):
+        input_number = 123 
 
-    def test_number_2(self):
-        input_number = 2
-
-        expected = [1, 0]
-        actual = _to_binary_arr(input_number)
+        expected = [1, 2, 3]
+        actual = _get_decimal_digits(input_number)
 
         self.assertEqual(expected, actual)
 

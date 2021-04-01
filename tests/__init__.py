@@ -1,1 +1,1 @@
-from .test_formatting import TestEncode, TestToBinaryArr
+from .test_formatting import TestEncode, TestGetDecimalDigits
