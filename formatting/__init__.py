@@ -1,1 +1,1 @@
-from .formatting import encode
+from .formatting import encode, _to_binary_arr

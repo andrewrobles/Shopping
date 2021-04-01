@@ -1,6 +1,6 @@
 import unittest
 
-from formatting import encode
+from formatting import encode, _to_binary_arr
 
 class TestEncode(unittest.TestCase):
 
@@ -89,6 +89,16 @@ class TestEncode(unittest.TestCase):
 
         expected = 53490482
         actual = encode(input_text)
+
+        self.assertEqual(expected, actual)
+
+class TestToBinaryArr(unittest.TestCase):
+
+    def test_number_2(self):
+        input_number = 2
+
+        expected = [1, 0]
+        actual = _to_binary_arr(input_number)
 
         self.assertEqual(expected, actual)
 

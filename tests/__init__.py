@@ -1,1 +1,1 @@
-from .test_formatting import TestEncode 
+from .test_formatting import TestEncode, TestToBinaryArr
