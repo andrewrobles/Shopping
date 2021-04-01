@@ -1,6 +1,6 @@
 import unittest
 
-from formatting import encode, _get_decimal_digits
+from formatting import encode, _get_decimal_digits, _get_binary_digits
 
 class TestEncode(unittest.TestCase):
 
@@ -98,6 +98,16 @@ class TestGetDecimalDigits(unittest.TestCase):
         input_number = 123 
 
         expected = [1, 2, 3]
+        actual = _get_decimal_digits(input_number)
+
+        self.assertEqual(expected, actual)
+
+class TestGetBinaryDigits(unittest.TestCase):
+
+    def test_number_8(self):
+        input_number = 8
+
+        expected = [1, 0, 0]
         actual = _get_decimal_digits(input_number)
 
         self.assertEqual(expected, actual)

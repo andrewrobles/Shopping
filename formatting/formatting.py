@@ -16,14 +16,7 @@ def _get_decimal_digits(number):
 
         number = number // 10 
         
-
     return digits
 
-
-
-    
-
-
-
-result = encode('A')
-print(result)
+def _get_binary_digits(number):
+    pass
