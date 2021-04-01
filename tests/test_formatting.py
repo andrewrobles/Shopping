@@ -107,8 +107,8 @@ class TestGetBinaryDigits(unittest.TestCase):
     def test_number_8(self):
         input_number = 8
 
-        expected = [1, 0, 0]
-        actual = _get_decimal_digits(input_number)
+        expected = [1, 0, 0, 0]
+        actual = _get_binary_digits(input_number)
 
         self.assertEqual(expected, actual)
 
