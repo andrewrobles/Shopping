@@ -1,5 +1,8 @@
 def encode(input_text):
     ascii_number = ord('A')
+    input_binary_digits = _get_binary_digits(ascii_number)
+    scrambled_binary_digits = _scramble_digits(input_binary_digits)
+    output_decimal_value = _get_decimal_value(sc)
 
     return ascii_number
 
@@ -47,4 +50,3 @@ def _get_decimal_value(binary_digits):
         decimal_value += binary_digit * 2 ** i
     
     return decimal_value
-
