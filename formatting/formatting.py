@@ -23,3 +23,6 @@ def _get_digits(number, base):
         number = number // base 
         
     return digits
+
+def _scramble_digits(digits):
+    pass

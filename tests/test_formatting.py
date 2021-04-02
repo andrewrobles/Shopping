@@ -1,6 +1,6 @@
 import unittest
 
-from formatting import encode, _get_decimal_digits, _get_binary_digits
+from formatting import encode, _get_decimal_digits, _get_binary_digits, _scramble_digits
 
 class TestEncode(unittest.TestCase):
 
@@ -111,6 +111,29 @@ class TestGetBinaryDigits(unittest.TestCase):
         actual = _get_binary_digits(input_number)
 
         self.assertEqual(expected, actual)
+
+class TestScrambleDigits(unittest.TestCase):
+
+    def test_ascii_a(self):
+        input_digits = [
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0, 0, 1],
+        ]
+
+        actual = _scramble_digits(input_digits)
+        expected = [
+            [0, 0, 0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 1],
+        ]
+
+        self.assertEqual(expected, actual)
+
 
 if __name__ == '__main__':
     unittest.main()
