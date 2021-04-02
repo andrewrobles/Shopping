@@ -25,4 +25,19 @@ def _get_digits(number, base):
     return digits
 
 def _scramble_digits(digits):
-    pass
+    scrambled = [[0]*8, [0]*8, [0]*8, [0]*8, [0]*8]]
+
+    for i in range(8):
+        _move_bit(digits, scrambled, i)
+
+    return scrambled        
+
+def _move_bit(src, dst, i):
+    src_i0 = 8 - i - 1
+    src_i1 = 8*2 - i - 1
+    src_i2 = 8*3 - i - 1
+    src_i3 = 8*4 - i - 1
+
+    dst_i0 = 
+    
+
