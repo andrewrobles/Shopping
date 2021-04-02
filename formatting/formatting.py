@@ -25,19 +25,17 @@ def _get_digits(number, base):
     return digits
 
 def _scramble_digits(digits):
-    scrambled = [[0]*8, [0]*8, [0]*8, [0]*8, [0]*8]]
+    scrambled = []
+    
+    for i in range(8, -1, -1):
 
-    for i in range(8):
-        _move_bit(digits, scrambled, i)
+        nibble = [
+            digits[i * 4 - 1],
+            digits[i * 3 - 1],
+            digits[i * 2 - 1],
+            digits[i - 1],
+        ]
+
+        scrambled = nibble + scrambled
 
     return scrambled        
-
-def _move_bit(src, dst, i):
-    src_i0 = 8 - i - 1
-    src_i1 = 8*2 - i - 1
-    src_i2 = 8*3 - i - 1
-    src_i3 = 8*4 - i - 1
-
-    dst_i0 = 
-    
-
