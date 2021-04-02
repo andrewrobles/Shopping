@@ -38,4 +38,13 @@ def get_arr_value(arr, row, col):
     return arr[index+ col]
 
 def _get_decimal_value(binary_digits):
-    pass
+    decimal_value = 0
+
+    for i in range(1, len(binary_digits)):
+        binary_index = len(binary_digits) - i 
+        binary_digit = binary_digits[binary_index]
+
+        decimal_value += binary_digit * 2 ** i
+    
+    return decimal_value
+
