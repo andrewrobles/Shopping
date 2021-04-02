@@ -36,3 +36,6 @@ def _scramble_digits(digits):
 def get_arr_value(arr, row, col):
     index = row * 8 
     return arr[index+ col]
+
+def _get_decimal_value(binary_digits):
+    pass

@@ -1,6 +1,6 @@
 import unittest
 
-from formatting import encode, _get_decimal_digits, _get_binary_digits, _scramble_digits
+from formatting import encode, _get_decimal_digits, _get_binary_digits, _scramble_digits, _get_decimal_value
 
 class TestEncode(unittest.TestCase):
 
@@ -115,25 +115,29 @@ class TestGetBinaryDigits(unittest.TestCase):
 class TestScrambleDigits(unittest.TestCase):
 
     def setUp(self):
-        self.input_digits = [
+        self.input_binary = [
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 1, 0, 0, 0, 0, 0, 1,
         ]
         
-        self.expected = [
+        self.scrambled_binary = [
             0, 0, 0, 0, 0, 0, 0, 1, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 1, 
         ]
 
-    def test_byte_4(self):
-        actual = _scramble_digits(self.input_digits)
+        self.output_decimal = 16777217
 
+    def test_scramble_digits(self):
+        actual = _scramble_digits(self.input_binary)
+        self.assertEqual(self.scrambled_binary, actual)
 
-        self.assertEqual(self.expected, actual)
+    def test_get_decimal_value(self):
+        actual = _get_decimal_value(self.scrambled_binary)
+        self.assertEqual(self.output_decimal, actual)
 
 
 if __name__ == '__main__':
