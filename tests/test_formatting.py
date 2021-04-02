@@ -114,23 +114,26 @@ class TestGetBinaryDigits(unittest.TestCase):
 
 class TestScrambleDigits(unittest.TestCase):
 
-    def test_ascii_a(self):
-        input_digits = [
+    def setUp(self):
+        self.input_digits = [
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 1, 0, 0, 0, 0, 0, 1,
         ]
-
-        actual = _scramble_digits(input_digits)
-        expected = [
+        
+        self.expected = [
             0, 0, 0, 0, 0, 0, 0, 1, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 1, 
         ]
 
-        self.assertEqual(expected, actual)
+    def test_byte_4(self):
+        actual = _scramble_digits(self.input_digits)
+
+
+        self.assertEqual(self.expected, actual)
 
 
 if __name__ == '__main__':

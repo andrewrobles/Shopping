@@ -26,16 +26,13 @@ def _get_digits(number, base):
 
 def _scramble_digits(digits):
     scrambled = []
-    
-    for i in range(8, -1, -1):
 
-        nibble = [
-            digits[i * 4 - 1],
-            digits[i * 3 - 1],
-            digits[i * 2 - 1],
-            digits[i - 1],
-        ]
-
-        scrambled = nibble + scrambled
-
+    for col in range(8):
+        for row in range(4):
+            scrambled.append(get_arr_value(digits, row, col))
+        
     return scrambled        
+
+def get_arr_value(arr, row, col):
+    index = row * 8 
+    return arr[index+ col]
