@@ -93,60 +93,6 @@ class IntegrationTests(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-class UnitTests(unittest.TestCase):
-    
-    def test_get_decimal_digits_123(self):
-        input_number = 123 
-
-        actual = _get_decimal_digits(input_number)
-        expected = [1, 2, 3]
-
-        self.assertEqual(expected, actual)
-    
-    def test_binary_digits_8(self):
-        input_number = 8
-
-        actual = _get_binary_digits(input_number)
-        expected = [
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 1, 0, 0, 0,
-        ]
-
-        self.assertEqual(expected, actual)
-
-    def test_scramble_digits(self):
-        input_binary = [
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 1, 0, 0, 0, 0, 0, 1,
-        ]
-
-        actual = _scramble_digits(input_binary)
-        expected = [
-            0, 0, 0, 0, 0, 0, 0, 1, 
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 1, 
-        ]
-
-        self.assertEqual(expected, actual)
-
-    def test_get_decimal_value(self):
-        input_binary = [
-            0, 0, 0, 0, 0, 0, 0, 1, 
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 1, 
-        ]
-
-        actual = _get_decimal_value(input_binary)
-        expected = 16777217
-
-        self.assertEqual(expected, actual)
-
 class BaseTestCases:
 
     class BaseTest(unittest.TestCase):
