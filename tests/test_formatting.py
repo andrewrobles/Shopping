@@ -151,18 +151,59 @@ class BaseTestCases:
 
     class BaseTest(unittest.TestCase):
 
-        def testCommon(self):
-            print('Calling BaseTest:testCommon')
-            value = 5
-            self.assertEqual(value, 5)
+        def test_get_binary_digits(self):
+            '''First step is to convert raw characters into binary'''
+
+            actual = self.input_binary
+            expected = _get_binary_digits(self.raw_characters)
+
+            self.assertEqual(actual, expected)
+
+        def test_scramble_digits(self):
+            '''Second step is to scramble binary digits''' 
+            
+            actual = self.output_binary
+            expected = _scramble_digits(self.input_binary)
+
+            self.assertEqual(actual, expected)
+
+        def test_get_decimal_value(self):
+            '''Third step is convert binary digits into binary'''
+
+            actual = self.output_decimal
+            expected = _get_decimal_value(self.output_binary)
+
+            self.assertEqual(actual, expected)
+
+        def test_encode(self):
+            '''Public function does all the steps in one'''
+
+            actual = self.output_decimal
+            expected = encode(self.raw_characters)
+
+            self.assertEqual(actual, expected)
 
 
 class SubTest1(BaseTestCases.BaseTest):
+    
+    def setUp(self):
+        self.raw_characters = 'A'
 
-    def testSub1(self):
-        print('Calling SubTest1:testSub1')
-        sub = 3
-        self.assertEqual(sub, 3)
+        self.input_binary = [
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 1, 0, 0, 0, 0, 0, 1 
+        ]
+        
+        self.output_binary = [
+            0, 0, 0, 0, 0, 0, 0, 1, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 1 
+        ]
+
+        self.output_decimal = 16777217 
 
 
 class SubTest2(BaseTestCases.BaseTest):
