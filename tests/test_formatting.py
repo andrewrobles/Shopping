@@ -147,6 +147,36 @@ class UnitTests(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
+class TestSingleCharacter(unittest.TestCase):
+
+    def setUp(self):
+        self.raw_characters = 'A'
+
+        self.input_binary = [
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 1, 0, 0, 0, 0, 0, 1 
+        ]
+        
+        self.output_binary = [
+            0, 0, 0, 0, 0, 0, 0, 1, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 1 
+        ]
+
+        self.output_decimal = 16777217 
+
+    def test_get_decimal_digits(self):
+        '''Step 1 is to convert raw characters into binary'''
+
+        actual = self.input_binary
+        expected = _get_decimal_digits(self.raw_characters)
+
+        self.assertEqual(actual, expected)
+    
+
 class TestFullBundle(unittest.TestCase):
 
     def setUp(self):
