@@ -220,6 +220,8 @@ class TestFullBundle(BaseTestCases.BaseTest):
     def setUp(self):
         self.raw_characters = 'FRED'
 
+        self.ascii_digits = [70, 82, 69, 68]
+
         self.input_binary = [
             0, 1, 0, 0, 0, 1, 0, 0, 
             0, 1, 0, 0, 0, 1, 0, 1, 
