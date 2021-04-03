@@ -6,7 +6,7 @@ def encode(input_text):
     return output_decimal_value 
 
 def _get_ascii_digits(input_text):
-    pass
+    return [ord(char) for char in input_text]
 
 def _get_decimal_digits(number):
     return _get_digits(number, 10)
