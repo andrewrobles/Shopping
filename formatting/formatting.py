@@ -13,7 +13,12 @@ def _get_decimal_digits(number):
     return _get_digits(number, 10)
 
 def _get_binary_digits(ascii_digits):
-    binary_digits = _get_digits(ascii_digits, 2)
+    binary_digits = []
+
+    for curr_ascii_digit in ascii_digits:
+        curr_binary_chunk = _get_digits(curr_ascii_digit, 2)
+        binary_digits += curr_binary_chunk
+
     _zero_pad(binary_digits, 32)
 
     return binary_digits
