@@ -151,16 +151,24 @@ class BaseTestCases:
 
     class BaseTest(unittest.TestCase):
 
-        def test_get_binary_digits(self):
-            '''First step is to convert raw characters into binary'''
+        def test_get_ascii_digits(self):
+            '''First step is to convert raw characters to ascii digits'''
 
-            actual = self.input_binary
+            actual = self.ascii_digits
             expected = _get_binary_digits(self.raw_characters)
 
             self.assertEqual(actual, expected)
 
+        def test_get_binary_digits(self):
+            '''Second step is to convert ascii digits into binary'''
+
+            actual = self.input_binary
+            expected = _get_binary_digits(self.ascii_digits)
+
+            self.assgrtEqual(actual, expected)
+
         def test_scramble_digits(self):
-            '''Second step is to scramble binary digits''' 
+            '''Third step is to scramble binary digits''' 
             
             actual = self.output_binary
             expected = _scramble_digits(self.input_binary)
@@ -168,7 +176,7 @@ class BaseTestCases:
             self.assertEqual(actual, expected)
 
         def test_get_decimal_value(self):
-            '''Third step is convert binary digits into binary'''
+            '''Fourth step is convert binary digits into binary'''
 
             actual = self.output_decimal
             expected = _get_decimal_value(self.output_binary)
@@ -188,6 +196,8 @@ class TestSingleCharacter(BaseTestCases.BaseTest):
     
     def setUp(self):
         self.raw_characters = 'A'
+
+        self.ascii_digits = [65]
 
         self.input_binary = [
             0, 0, 0, 0, 0, 0, 0, 0, 
