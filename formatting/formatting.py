@@ -10,7 +10,10 @@ def _get_decimal_digits(number):
     return _get_digits(number, 10)
 
 def _get_binary_digits(number):
-    return _get_digits(number, 2)
+    binary_digits = _get_digits(number, 2)
+    _zero_pad(binary_digits, 32)
+
+    return binary_digits
 
 def _get_digits(number, base):
     digits = []
@@ -26,6 +29,11 @@ def _get_digits(number, base):
         number = number // base 
         
     return digits
+
+def _zero_pad(digits, length):
+    for i in range(len(digits), length):
+        digits.insert(0, 0)
+    
 
 def _scramble_digits(digits):
     scrambled = []
