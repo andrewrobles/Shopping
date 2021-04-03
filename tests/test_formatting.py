@@ -2,6 +2,7 @@ import unittest
 
 from formatting import encode, _get_decimal_digits, _get_binary_digits, _scramble_digits, _get_decimal_value
 
+
 class IntegrationTests(unittest.TestCase):
 
     def test_single_character(self):
@@ -145,6 +146,44 @@ class UnitTests(unittest.TestCase):
         expected = 16777217
 
         self.assertEqual(expected, actual)
+
+class TestFullBundle(unittest.TestCase):
+
+    def setUp(self):
+        self.raw_characters = 'FRED'
+
+        self.input_binary = [
+            0, 1, 0, 0, 0, 1, 0, 0, 
+            0, 1, 0, 0, 0, 1, 0, 1, 
+            0, 1, 0, 1, 0, 0, 1, 0, 
+            0, 1, 0, 0, 0, 1, 1, 0, 
+        ]
+
+        self.output_binary = [
+            0, 0, 0, 0, 1, 1, 1, 1, 
+            0, 0, 0, 0, 0, 0, 1, 0, 
+            0, 0, 0, 0, 1, 1, 0, 1, 
+            0, 0, 1, 1, 0, 1, 0, 0, 
+        ]
+
+        self.output_decimal = 251792692
+
+    def test_get_decimal_digits(self):
+        '''Step 1 is to convert raw characters into binary'''
+
+        actual = self.input_binary
+        expected = _get_decimal_digits(self.raw_characters)
+
+        self.assertEqual(actual, expected)
+
+    def test_encode(self):
+        input_text = 'FRED'
+        
+        expected = 251792692 
+        actual = encode(input_text)
+
+        self.assertEqual(expected, actual)
+    
 
 if __name__ == '__main__':
     unittest.main()
