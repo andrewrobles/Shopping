@@ -238,5 +238,29 @@ class TestFullBundle(BaseTestCases.BaseTest):
 
         self.output_decimal = 251792692
 
+class TestNonAlphanumerics(BaseTestCases.BaseTest):
+    
+    def setUp(self):
+        self.raw_characters = ' :^)'
+
+        self.ascii_digits = [32, 58, 94, 41]
+
+        self.input_binary = [
+            0, 0, 1, 0, 1, 0, 0, 1,
+            0, 1, 0, 1, 1, 1, 1, 0,
+            0, 0, 1, 1, 1, 0, 1, 0,
+            0, 0, 1, 0, 0, 0, 0, 0,
+        ]
+
+        self.output_binary = [
+            0, 0, 0, 0, 0, 1, 0, 0,
+            1, 0, 1, 1, 0, 1, 1, 0,
+            1, 1, 1, 0, 0, 1, 0, 0,
+            0, 1, 1, 0, 1, 0, 0, 0,
+        ]
+
+        self.output_decimal = 79094888
+
+
 if __name__ == '__main__':
     unittest.main()
