@@ -2,7 +2,7 @@ import unittest
 
 from formatting import encode, _get_decimal_digits, _get_binary_digits, _scramble_digits, _get_decimal_value
 
-class TestEncode(unittest.TestCase):
+class IntegrationTests(unittest.TestCase):
 
     def test_single_character(self):
         input_text = 'A'
@@ -92,58 +92,59 @@ class TestEncode(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-class TestGetDecimalDigits(unittest.TestCase):
+class UnitTests(unittest.TestCase):
     
-    def test_number_123(self):
+    def test_get_decimal_digits_123(self):
         input_number = 123 
 
-        expected = [1, 2, 3]
         actual = _get_decimal_digits(input_number)
+        expected = [1, 2, 3]
 
         self.assertEqual(expected, actual)
-
-class TestGetBinaryDigits(unittest.TestCase):
-
-    def test_number_8(self):
+    
+    def test_binary_digits_8(self):
         input_number = 8
 
+        actual = _get_binary_digits(input_number)
         expected = [
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 1, 0, 0, 0,
         ]
-        actual = _get_binary_digits(input_number)
 
         self.assertEqual(expected, actual)
 
-class TestScrambleDigits(unittest.TestCase):
-
-    def setUp(self):
-        self.input_binary = [
+    def test_scramble_digits(self):
+        input_binary = [
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 1, 0, 0, 0, 0, 0, 1,
         ]
-        
-        self.scrambled_binary = [
+
+        actual = _scramble_digits(input_binary)
+        expected = [
             0, 0, 0, 0, 0, 0, 0, 1, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 1, 
         ]
 
-        self.output_decimal = 16777217
-
-    def test_scramble_digits(self):
-        actual = _scramble_digits(self.input_binary)
-        self.assertEqual(self.scrambled_binary, actual)
+        self.assertEqual(expected, actual)
 
     def test_get_decimal_value(self):
-        actual = _get_decimal_value(self.scrambled_binary)
-        self.assertEqual(self.output_decimal, actual)
+        input_binary = [
+            0, 0, 0, 0, 0, 0, 0, 1, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 1, 
+        ]
 
+        actual = _get_decimal_value(input_binary)
+        expected = 16777217
+
+        self.assertEqual(expected, actual)
 
 if __name__ == '__main__':
     unittest.main()

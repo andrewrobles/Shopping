@@ -1,1 +1,1 @@
-from .test_formatting import TestEncode, TestGetDecimalDigits, TestGetBinaryDigits, TestScrambleDigits
+from .test_formatting import IntegrationTests, UnitTests
