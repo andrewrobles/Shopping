@@ -1,5 +1,6 @@
 def encode(input_text):
-    input_binary_digits = _get_binary_digits(input_text)
+    input_ascii_digits = _get_ascii_digits(input_text)
+    input_binary_digits = _get_binary_digits(input_ascii_digits)
     scrambled_binary_digits = _scramble_digits(input_binary_digits)
     output_decimal_value = _get_decimal_value(scrambled_binary_digits)
 
@@ -11,9 +12,8 @@ def _get_ascii_digits(input_text):
 def _get_decimal_digits(number):
     return _get_digits(number, 10)
 
-def _get_binary_digits(text):
-    number = ord('A')
-    binary_digits = _get_digits(number, 2)
+def _get_binary_digits(ascii_digits):
+    binary_digits = _get_digits(ascii_digits, 2)
     _zero_pad(binary_digits, 32)
 
     return binary_digits

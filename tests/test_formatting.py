@@ -165,7 +165,7 @@ class BaseTestCases:
             actual = self.input_binary
             expected = _get_binary_digits(self.ascii_digits)
 
-            self.assgrtEqual(actual, expected)
+            self.assertEqual(actual, expected)
 
         def test_scramble_digits(self):
             '''Third step is to scramble binary digits''' 
