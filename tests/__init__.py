@@ -1,1 +1,1 @@
-from .test_formatting import IntegrationTests, UnitTests, TestFullBundle, TestSingleCharacter, SubTest1, SubTest2
+from .test_formatting import IntegrationTests, UnitTests, TestFullBundle, TestSingleCharacter
