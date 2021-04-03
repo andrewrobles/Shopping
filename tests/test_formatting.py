@@ -184,7 +184,7 @@ class BaseTestCases:
             self.assertEqual(actual, expected)
 
 
-class SubTest1(BaseTestCases.BaseTest):
+class TestSingleCharacter(BaseTestCases.BaseTest):
     
     def setUp(self):
         self.raw_characters = 'A'
