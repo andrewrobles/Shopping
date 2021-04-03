@@ -17,7 +17,8 @@ def _get_binary_digits(ascii_digits):
 
     for curr_ascii_digit in ascii_digits:
         curr_binary_chunk = _get_digits(curr_ascii_digit, 2)
-        binary_digits += curr_binary_chunk
+        _zero_pad(curr_binary_chunk, 8)
+        binary_digits = curr_binary_chunk + binary_digits
 
     _zero_pad(binary_digits, 32)
 
