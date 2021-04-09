@@ -1,9 +1,12 @@
 import unittest
 
-from formatting import encode, _get_ascii_digits, _get_decimal_digits, _get_binary_digits, _scramble_digits, _get_decimal_value
+from formatting import encode, _get_ascii_digits, _get_binary_digits, _scramble_digits, _get_decimal_value
 
 
 class IntegrationTests(unittest.TestCase):
+    '''
+    Tests from "More examples" section of problem spec
+    '''
 
     def test_single_character(self):
         input_text = 'A'
@@ -96,6 +99,16 @@ class IntegrationTests(unittest.TestCase):
 class BaseTestCases:
 
     class BaseTest(unittest.TestCase):
+        '''
+        Classes that inherit from BaseTest require the following variables:
+
+        - raw_characters
+        - ascii_digits
+        - input_binary
+        - output_binary
+
+        to be defined in test setUp function as class variables.
+        '''
 
         def test_get_ascii_digits(self):
             '''First step is to convert raw characters to ascii digits'''
@@ -122,7 +135,7 @@ class BaseTestCases:
             self.assertEqual(actual, expected)
 
         def test_get_decimal_value(self):
-            '''Fourth step is convert binary digits into binary'''
+            '''Fourth step is convert binary digits into decimal'''
 
             actual = self.output_decimal
             expected = _get_decimal_value(self.output_binary)
@@ -139,6 +152,9 @@ class BaseTestCases:
 
 
 class TestSingleCharacter(BaseTestCases.BaseTest):
+    '''
+    Tests from "Examples" section of problem spec
+    '''
     
     def setUp(self):
         self.raw_characters = 'A'
