@@ -96,6 +96,47 @@ class IntegrationTests(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
+    def test_7_letter_word(self):
+        input_text = 'tacocat'
+
+        expected = [267487694, 125043731]
+        actual = encode(input_text)
+
+        self.assertEqual(expected, actual)
+
+    def test_4_words(self):
+        input_text = 'never odd or even'
+
+        expected = [267657050, 233917524, 234374596, 250875466, 17830160]
+        actual = encode(input_text)
+
+        self.assertEqual(expected, actual)
+
+    def test_4_words_with_special_characters(self):
+        input_text = 'lager, sir, is regal'
+
+        expected = [267394382, 167322264, 66212897, 200937635, 267422503]
+        actual = encode(input_text)
+
+        self.assertEqual(expected, actual)
+
+    def test_8_words_with_special_characters_1(self):
+        input_text = "go hang a salami, I'm a lasagna hog"
+
+        expected = [200319795, 133178981, 234094669, 267441422, 78666124, 99619077, 267653454, 133178165, 124794470]
+        actual = encode(input_text)
+
+        self.assertEqual(expected, actual)
+
+    def test_8_words_with_special_characters_2(self):
+        input_text = 'egad, a base tone denotes a bad age'
+
+        expected = [267389735, 82841860, 267651166, 250793668, 233835785, 267665210, 99680277, 133170194, 124782119]
+        actual = encode(input_text)
+
+        self.assertEqual(expected, actual)
+    
+
 class BaseTestCases:
 
     class BaseTest(unittest.TestCase):
