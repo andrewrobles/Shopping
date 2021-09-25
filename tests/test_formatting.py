@@ -20,7 +20,7 @@ class IntegrationTests(unittest.TestCase):
         '''
         # input_text = 'tacocat'
         encoded = 267487694
-        expected = 'taco'
+        expected = '1111111100011000100111001110'
 
         # self.assertEqual(input_text, decode(encode(input_text)))
         self.assertEqual(expected, decode(encoded))
