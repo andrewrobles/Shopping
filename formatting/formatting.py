@@ -1,5 +1,11 @@
 def decode(input_text):
-    pass
+    # Convert decimal to binary
+
+    # Unscramble binary digits
+
+    # Convert binary into ascii digits
+
+    # Convert ascii digits into raw characters
 
 
 def encode(input_text):
