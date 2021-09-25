@@ -9,9 +9,21 @@ class IntegrationTests(unittest.TestCase):
     '''
 
     def test_tacocat(self):
-        input_text = 'tacocat'
+        '''
+        116 97 99 111 99 97 116 
+        1110100 1100001 1100011 1101111 1100011 1100001 1110100
+        01110100 01100001 01100011 01101111 01100011 01100001 01110100
 
-        self.assertEqual(input_text, decode(encode(input_text)))
+        [267487694, 125043731]
+        1111111100011000100111001110 111011101000000010000010011
+
+        '''
+        # input_text = 'tacocat'
+        encoded = 267487694
+        expected = 'taco'
+
+        # self.assertEqual(input_text, decode(encode(input_text)))
+        self.assertEqual(expected, decode(encoded))
 
     def test_single_character(self):
         input_text = 'A'

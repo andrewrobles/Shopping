@@ -1,6 +1,7 @@
 def decode(input_text):
     pass
 
+
 def encode(input_text):
     chunks = []
 
@@ -82,6 +83,25 @@ def _zero_pad(digits, length):
 
     for i in range(len(digits), length):
         digits.insert(0, 0)
+
+def _unscramble_digits(digits):
+    '''Unscramble digits by iterating along columns of virtual 2D array'''
+
+    unscrambled = [-1] * 32
+
+    index = 0
+
+    for col in range(8):
+        for row in range(4):
+            # Get current value to put back
+            arr_value = arr_value[index]
+
+            set_arr_value(uncrambled, row, col, arr_value)
+
+    return uncrambled
+
+def set_arr_value(arr, row, col, value):
+    arr[row * 8 + col] = value
 
 def _scramble_digits(digits):
     '''Scramble digits by iterating along columns of virtual 2D array'''
