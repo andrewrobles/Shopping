@@ -1,12 +1,17 @@
 import unittest
 
-from formatting import encode, _get_ascii_digits, _get_binary_digits, _scramble_digits, _get_decimal_value
+from formatting import encode, decode
 
 
 class IntegrationTests(unittest.TestCase):
     '''
     Tests from "More examples" section of problem spec
     '''
+
+    def test_tacocat(self):
+        input_text = 'tacocat'
+
+        self.assertEqual(input_text, decode(encode(input_text)))
 
     def test_single_character(self):
         input_text = 'A'

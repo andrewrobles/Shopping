@@ -1,3 +1,6 @@
+def decode(input_text):
+    pass
+
 def encode(input_text):
     chunks = []
 
