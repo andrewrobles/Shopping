@@ -1,4 +1,14 @@
 def encode(input_text):
+    chunks = []
+
+    for i in range(0, len(input_text), 4):
+        curr_chunk = input_text[i:min(i+4, len(input_text))]
+        encoded_chunk = encode_16_bits(curr_chunk)
+        chunks.append(encoded_chunk)
+
+    return chunks
+
+def encode_16_bits(input_text):
     '''Encodes input text in Weird Text Format (8-bit)'''
 
     # Convert raw characters into ascii digits
