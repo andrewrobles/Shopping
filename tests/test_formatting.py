@@ -21,13 +21,14 @@ class IntegrationTests(unittest.TestCase):
         1. 267487694
         2. 00001111 11110001 10001001 11001110
         3. 01101111 01100011 01100001 01110100
-        4. 1169799111
+        4. [111, 99, 97, 116]
+        5. taco
 
 
         '''
         # input_text = 'tacocat'
         encoded = 267487694
-        expected = '01101111 01100011 01100001 01110100'
+        expected = [111, 99, 97, 116]
         actual = decode(encoded)
 
         # self.assertEqual(input_text, decode(encode(input_text)))
