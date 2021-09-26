@@ -1,12 +1,28 @@
-def decode(arr):
+def decode(number):
     # Convert decimal to binary
-    return bin(arr)[2:]
+    return decimal_to_binary(number)
 
     # Unscramble binary digits
 
     # Convert binary into ascii digits
 
     # Convert ascii digits into raw characters
+
+def decimal_to_binary(num):
+    arr = ['']
+    decimal_to_binary_helper(num, arr)
+
+    digits = [str(curr) for curr in arr]
+    val = ''
+    for char in digits:
+        val += char
+    return val
+
+
+def decimal_to_binary_helper(num, arr):
+    if num >= 1:
+        decimal_to_binary_helper(num // 2, arr)
+        arr.append(num % 2)
 
 
 def encode(input_text):
@@ -144,3 +160,4 @@ def _get_decimal_value(binary_digits):
         decimal_value += binary_digit * 2 ** i
     
     return decimal_value
+
