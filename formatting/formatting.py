@@ -6,10 +6,13 @@ def decode(number):
     # # Unscramble binary digits
     digits = unscramble_binary_digits(digits)
 
-    return stringify_digits(digits)
+    # return stringify_digits(digits)
 
 
     # Convert binary into ascii digits
+    digits = [_get_decimal_value(digits[i*8:i*8+8]) for i in range(4)]
+    return digits
+    
 
     # Convert ascii digits into raw character
 
