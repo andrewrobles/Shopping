@@ -11,10 +11,10 @@ def decode(number):
 
     # Convert binary into ascii digits
     digits = [_get_decimal_value(digits[i*8:i*8+8]) for i in range(4)]
-    return digits
     
 
     # Convert ascii digits into raw character
+    return ''.join([chr(number) for number in reversed(digits)])
 
 def stringify_digits(arr):
     digits = [str(curr) for curr in arr]
