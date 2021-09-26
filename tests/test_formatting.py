@@ -19,11 +19,6 @@ class IntegrationTests(unittest.TestCase):
         1111111100011000100111001110 111011101000000010000010011
 
         1. 267487694
-        2. 01111111 01000110 00010011 01001110
-        3. 01101111 01100011 01100001 01110100
-        4. tacocat
-
-        1. 267487694
         2. 00001111 11110001 10001001 11001110
         3. 01101111 01100011 01100001 01110100
         4. 1169799111
@@ -33,6 +28,11 @@ class IntegrationTests(unittest.TestCase):
         # input_text = 'tacocat'
         encoded = 267487694
         expected = '00001111111100011000100111001110'
+        actual = decode(encoded)
+        print('LEN EXPECTED')
+        print(len(expected))
+        print('LEN ACTUAL')
+        print(len(expected))
 
         # self.assertEqual(input_text, decode(encode(input_text)))
         self.assertEqual(expected, decode(encoded))
