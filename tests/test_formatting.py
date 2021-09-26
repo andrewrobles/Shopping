@@ -8,7 +8,7 @@ class IntegrationTests(unittest.TestCase):
     Tests from "More examples" section of problem spec
     '''
 
-    def test_tacocat(self):
+    def test_tacocat_integration(self):
         '''
         taco
         116 97 99 111
@@ -23,13 +23,16 @@ class IntegrationTests(unittest.TestCase):
         3. 01101111 01100011 01100001 01110100
         4. [111, 99, 97, 116]
         5. taco
-
-
         '''
         arr = [267487694, 125043731]
         string = 'tacocat'
-
         self.assertEqual(string, decode(encode('tacocat')))
+
+    def test_decode_tacocat(self):
+        arr = [267487694, 125043731]
+        string = 'tacocat'
+
+        self.assertEqual(string, decode(arr))
 
     def test_single_character(self):
         input_text = 'A'

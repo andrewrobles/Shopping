@@ -6,15 +6,21 @@ def decode_16_bits(number):
     digits = decimal_to_binary(number)
 
 
-    # # Unscramble binary digits
+    # Unscramble binary digits
     digits = unscramble_binary_digits(digits)
 
     # Convert binary into ascii digits
     digits = [_get_decimal_value(digits[i*8:i*8+8]) for i in range(4)]
-    
 
     # Convert ascii digits into raw character
-    return ''.join([chr(number) for number in reversed(digits)])
+    return ''.join([chr(number) for number in reversed(digits)]).strip(chr(0))    
+
+def is_valid_chunk(digits, chunk_num):
+    for i in range(chunk_num * 8, chunk_num*8+8):
+    # for i in range(digits[chunk_num * 8: chunk_num*8+8]):
+        if digits[i] != 0:
+            return True
+    return False
 
 def stringify_digits(arr):
     digits = [str(curr) for curr in arr]
