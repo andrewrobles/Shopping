@@ -1,2 +1,2 @@
 from formatting import encode
-print(encode('tacocat'))
+print(encode('taco'))

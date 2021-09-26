@@ -1,28 +1,45 @@
 def decode(number):
     # Convert decimal to binary
-    return decimal_to_binary(number)
+    digits = decimal_to_binary(number)
+    return stringify_digits(digits)
 
     # Unscramble binary digits
 
+
     # Convert binary into ascii digits
 
-    # Convert ascii digits into raw characters
+    # Convert ascii digits into raw character
 
-def decimal_to_binary(num):
-    arr = ['']
-    decimal_to_binary_helper(num, arr)
-
+def stringify_digits(arr):
     digits = [str(curr) for curr in arr]
     val = ''
     for char in digits:
         val += char
     return val
 
+def decimal_to_binary(num):
+    arr = ['']
+    decimal_to_binary_helper(num, arr)
+    _zero_pad(arr, 33)
+
+    return arr
+
 
 def decimal_to_binary_helper(num, arr):
     if num >= 1:
         decimal_to_binary_helper(num // 2, arr)
         arr.append(num % 2)
+
+def unscramble_binary_digits(digits):
+    unscrambled = [-1] * 32
+
+    for i in range(len(digits)):
+        unscrambled[i // 8 + (i % 8) * 4] = digits[i]
+
+    return unscrambled    
+
+def set_arr_value(arr, row, col, value):
+    arr[row * 8 + col] = value
 
 
 def encode(input_text):
@@ -40,15 +57,19 @@ def encode_16_bits(input_text):
 
     # Convert raw characters into ascii digits
     input_ascii_digits = _get_ascii_digits(input_text)
+    print(stringify_digits(input_ascii_digits))
 
     # Convert ascii digits into binary
     input_binary_digits = _get_binary_digits(input_ascii_digits)
+    print(stringify_digits(input_binary_digits))
 
     # Scramble binary digits
     scrambled_binary_digits = _scramble_digits(input_binary_digits)
+    print(stringify_digits(scrambled_binary_digits))
 
     # Convert binary digits into decimal
     output_decimal_value = _get_decimal_value(scrambled_binary_digits)
+    print(output_decimal_value)
 
     return output_decimal_value 
 
