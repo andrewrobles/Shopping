@@ -2,9 +2,6 @@ def decode(number):
     # Convert decimal to binary
     digits = decimal_to_binary(number)
 
-    print('LEN DIGITS')
-    print(len(digits))
-
     return stringify_digits(digits)
 
     # # Unscramble binary digits
@@ -27,7 +24,7 @@ def stringify_digits(arr):
     return val
 
 def decimal_to_binary(num):
-    arr = ['']
+    arr = []
     decimal_to_binary_helper(num, arr)
     _zero_pad(arr, 32)
 
