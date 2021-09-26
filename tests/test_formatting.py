@@ -8,6 +8,14 @@ class IntegrationTests(unittest.TestCase):
     Tests from "More examples" section of problem spec
     '''
 
+    def test_everything(self):
+        string_arr = ['tacocat', 'never odd or even', 'lager, sir, is regal', "go hang a salami, I'm a lasagna hog", "egad, a base tone denotes a bad age"]
+
+        for i in range(len(string_arr)):
+            curr_string = string_arr[i]
+            self.assertEqual(curr_string, decode(encode(curr_string)))
+
+
     def test_tacocat_integration(self):
         '''
         taco
