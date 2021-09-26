@@ -17,6 +17,8 @@ def stringify_digits(arr):
     digits = [str(curr) for curr in arr]
     val = ''
     for i in range(len(digits)):
+        if i % 8 == 0 and i != 0:
+            val += ' '
         val += digits[i]
 
     return val
@@ -38,7 +40,7 @@ def unscramble_binary_digits(digits):
     unscrambled = [-1] * 32
 
     for i in range(len(digits)):
-        unscrambled[i // 8 + (i % 8) * 4] = digits[i]
+        unscrambled[i] = digits[i // 8 + (i % 8) * 4]
 
     return unscrambled    
 
