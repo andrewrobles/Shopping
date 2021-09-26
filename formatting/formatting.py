@@ -2,13 +2,11 @@ def decode(number):
     # Convert decimal to binary
     digits = decimal_to_binary(number)
 
-    return stringify_digits(digits)
 
     # # Unscramble binary digits
-    # digits = unscramble_binary_digits(digits)
-    # print('LEN DIGITS')
-    # print(len(digits))
-    # return stringify_digits(digits)
+    digits = unscramble_binary_digits(digits)
+
+    return stringify_digits(digits)
 
 
     # Convert binary into ascii digits
