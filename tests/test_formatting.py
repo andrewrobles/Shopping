@@ -26,13 +26,10 @@ class IntegrationTests(unittest.TestCase):
 
 
         '''
-        # input_text = 'tacocat'
-        encoded = 267487694
-        expected = 'taco'
-        actual = decode(encoded)
+        arr = [267487694, 125043731]
+        string = 'tacocat'
 
-        # self.assertEqual(input_text, decode(encode(input_text)))
-        self.assertEqual(expected, decode(encoded))
+        self.assertEqual(string, decode(encode('tacocat')))
 
     def test_single_character(self):
         input_text = 'A'
