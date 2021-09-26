@@ -1,5 +1,6 @@
-def decode(input_text):
+def decode(arr):
     # Convert decimal to binary
+    return bin(arr)[2:]
 
     # Unscramble binary digits
 
