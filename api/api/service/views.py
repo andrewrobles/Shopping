@@ -6,9 +6,21 @@ from rest_framework.decorators import api_view
 from api.service.serializers import UserSerializer, GroupSerializer
 
 
-@api_view()
-def hello_world(request):
-    return Response({"message": "Hello, world!"})
+@api_view(['POST', 'GET'])
+def encoder(request):
+    if request.method == 'POST':
+        return Response(request.data)
+    elif request.method == 'GET':
+        message = {'message': 'Hello, world! Welcome to the weird text format encoder!!!'}
+        return Response(message)
+
+@api_view(['POST', 'GET'])
+def decoder(request):
+    if request.method == 'POST':
+        return Response(request.data)
+    elif request.method == 'GET':
+        message = {'message': 'Hello, world! Welcome to the weird text format decoder!!!'}
+        return Response(message)
 
 class UserViewSet(viewsets.ModelViewSet):
     """
