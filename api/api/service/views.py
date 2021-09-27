@@ -1,8 +1,14 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from api.service.serializers import UserSerializer, GroupSerializer
 
+
+@api_view()
+def hello_world(request):
+    return Response({"message": "Hello, world!"})
 
 class UserViewSet(viewsets.ModelViewSet):
     """
