@@ -28,14 +28,14 @@ export default function Home() {
 
   useEffect(() => {
     const baseUrl = 'http://localhost:8000'
-    fetch(baseUrl + '/hello-world/', {
-      method: 'GET',
+    fetch(baseUrl + '/encoder/', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Origin': 'http://localhost:3000',
       },
-    }).then(res => res.json()).then(json => alert('Message:' + json.message))
-    
+      body: JSON.stringify({'text': 'tacocat'})
+    }).then(res => res.json()).then(json => alert('Message:' + json.encoded))
   })
 
   
