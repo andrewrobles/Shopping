@@ -12,6 +12,7 @@ export default function Content(props) {
             difficultyLevel={props.difficultyLevel}
             nextQuestion={props.nextQuestion}
         />
+        
     </div>
   } else {
     return <>
@@ -26,17 +27,7 @@ export default function Content(props) {
 
 function Cover(props) {
   return <div>
-    <p className={`${styles.description}`}>{props.quizDescription}</p>
     
-    <p className={`${styles.description}`}>
-        Est. Time: <span className={`${styles.highlight}`}>{props.estimatedTime}</span>
-    </p>
-    <p className={`${styles.description}`}>
-        Difficulty level: <span className={`${styles.highlight}`}>{props.difficultyLevel}</span>
-    </p>
-    <div className={`mt-4`}>
-        <Button onClick={props.nextQuestion} buttonText={'Start Quiz'}/>
-    </div>
   </div>
 }
 

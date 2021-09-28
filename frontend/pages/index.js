@@ -8,9 +8,10 @@ import Header from '../components/Header/Header'
 import Content from '../components/Content/Content'
 import Control from '../components/Control/Control'
 import Results from '../components/Modal/Modal'
+import Button from '../components/Button/Button'
 
-const quizTitle='C# Programming Language Quiz'
-const quizDescription='A quiz on the basics of C#! Test your knowledge of the first chapter of the Precursor Course.'
+const quizTitle='Weird Text Format Encoder'
+const quizDescription='Type in the word you would like to encode'
 const estimatedTime='30 minutes'
 const difficultyLevel='6'
 const answerKey=['a1', 'b2', 'c3', 'd4', 'e4']
@@ -66,29 +67,13 @@ export default function Home() {
               questionIndex={state.questionIndex}
               quizLength={quizQuestionData.length}
           />
-          <div className={`card border-light shadow ${styles.card}`}>
-            <div className={`card-body`}>
-              <Content
-                quizTitle={quizTitle}
-                quizDescription={quizDescription}
-                quizQuestionData={quizQuestionData}
-                questionIndex={state.questionIndex}
-                selectQuestionOption={selectQuestionOption}
-                estimatedTime={estimatedTime}
-                difficultyLevel={difficultyLevel}
-                nextQuestion={nextQuestion}
-              />
-              <div className={`pt-5`}>
 
-              </div>
-              <Control 
-                state={state}
-                setState={setState}
-                quizQuestionData={quizQuestionData}
-                nextQuestion={nextQuestion}
-                answerKey={answerKey}
-              />
-            </div>
+          <div className="form-group">
+              <input type="email" className={`${styles.field} form-control border-light`} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Example: tacocat"/>
+          </div>
+          <div className={`pt-4`}></div>
+          <div>
+            <Button buttonText={'Execute'}/>
           </div>
       </div>
     </div>

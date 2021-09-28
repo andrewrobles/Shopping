@@ -5,6 +5,7 @@ export default function Header(props) {
     return (
         <div className={`mb-3`}>
             <h1 className={`${styles.quizTitle}`}>{props.quizTitle}</h1>
+            <p className={`${styles.quizDescription}`}>{props.quizDescription}</p>
             {
                 props.questionIndex >= 0 ?
                 <p className={`${styles.quizDescription}`}>{props.quizDescription}</p> :
