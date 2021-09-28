@@ -12,5 +12,6 @@ urlpatterns = [
     path('users', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('encoder/', views.encoder),
-    path('decoder/', views.decoder)
+    path('decoder/', views.decoder),
+    path('hello-world/', views.hello_world)
 ]

@@ -7,6 +7,9 @@ from api.service.serializers import UserSerializer, GroupSerializer
 
 from api.service.formatting import encode, decode
 
+@api_view(['GET'])
+def hello_world(request):
+    return Response({'message': 'Hello, world!'})
 
 @api_view(['POST', 'GET'])
 def encoder(request):
