@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from './index.module.css'
 
@@ -22,36 +22,23 @@ export default function Home() {
     'questionIndex': -1,
     'quizQuestionData': quizQuestionData,
     // -1 indicates question has not yet been answered
-    'studentAnswers': Array(quizQuestionData.length).fill(-1)
+    'studentAnswers': Array(quizQuestionData.length).fill(-1),
+    'response': ''
   })
 
-  const selectQuestionOption = (questionIndex, optionId) => {
-    // studentAnswers maps to question and value maps to answer
-    const studentAnswers = state.studentAnswers
+  useEffect(() => {
+    const baseUrl = 'http://localhost:8000'
+    fetch(baseUrl + '/hello-world/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Origin': 'http://localhost:3000',
+      },
+    }).then(res => res.json()).then(json => alert('Message:' + json.message))
+    
+  })
 
-    studentAnswers[questionIndex] = optionId
-
-    setState({
-      'questionIndex': state.questionIndex,
-      'quizQuestionData': state.quizQuestionData,
-      'studentAnswers': state.studentAnswers
-    })
-  }
-
-  const nextQuestion = () => {
-
-    // Out of bounds check
-    if (state['questionIndex'] + 1 < state.quizQuestionData.length) {
-
-      // Go to next question
-      setState({
-        'questionIndex': state['questionIndex'] + 1,
-        'quizQuestionData': state.quizQuestionData,
-        'studentAnswers': state.studentAnswers
-      })
-    }
-  }
-
+  
   return (
     <div className={`${styles.index}`}>
         <Navbar/>
@@ -73,11 +60,15 @@ export default function Home() {
           </div>
           <div className={`pt-4`}></div>
           <div>
-            <Button buttonText={'Execute'}/>
+            <Button buttonText={'Execute'} onClick={getRequest}/>
           </div>
       </div>
     </div>
   )
+}
+
+function getRequest(props) {
+
 }
 
 function Status(props) {

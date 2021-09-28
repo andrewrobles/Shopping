@@ -9,7 +9,7 @@ from api.service.formatting import encode, decode
 
 @api_view(['GET'])
 def hello_world(request):
-    return Response({'message': 'Hello, world!'})
+    return Response({'message': 'Hello, world!!'})
 
 @api_view(['POST', 'GET'])
 def encoder(request):
