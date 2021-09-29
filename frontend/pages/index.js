@@ -46,8 +46,8 @@ export default function Home() {
         'Content-Type': 'application/json',
         'Origin': 'http://localhost:3000',
       },
-      body: JSON.stringify({'values': state.decodeInput != '' ? state.decodeInput.split(",").map(Number): ''})
-    }).then(res => res.json()).then(json => alert('Decoded value is: ' + json.decoded))
+      body: JSON.stringify({'values': validateNumbersAndNotify(state.decodeInput) ? state.decodeInput.split(",").map(Number) : ''})
+    }).then(res => res.json()).then(json => validateNumbers(state.decodeInput) ? alert('Decoded value is: ' + json.decoded) : {})
   }
 
   const handle_change = e => {
@@ -130,6 +130,23 @@ export default function Home() {
   )
 }
 
+const validateNumbers = (myString) => {
+  let regex = /[0-9]+(,[0-9]+)*/g
+  if (regex.test(myString)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+const validateNumbersAndNotify = (myString) => {
+  if (validateNumbers(myString)) {
+    return true
+  } else {
+    alert('List of numbers to decode was invalidly formatted. Please try again.')
+    return false
+  }
+}
 
 
 function Status(props) {
