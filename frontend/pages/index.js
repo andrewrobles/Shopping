@@ -21,17 +21,19 @@ export default function Home() {
     'input': ''
   })
 
-  // useEffect(() => {
-  //   const baseUrl = 'http://localhost:8000'
-  //   fetch(baseUrl + '/encoder/', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Origin': 'http://localhost:3000',
-  //     },
-  //     body: JSON.stringify({'text': 'tacocat'})
-  //   }).then(res => res.json()).then(json => alert('Message:' + json.encoded))
-  // })
+  
+  const handleEncode = (e, state) => {
+    e.preventDefault()
+    const baseUrl = 'http://localhost:8000'
+    fetch(baseUrl + '/encoder/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Origin': 'http://localhost:3000',
+      },
+      body: JSON.stringify({'text': state.input})
+    }).then(res => res.json()).then(json => alert('Decoded value is:' + json.encoded))
+  }
 
   const handle_change = e => {
     const name = e.target.name;
@@ -51,7 +53,7 @@ export default function Home() {
   return (
     <div className={`${styles.index}`}>
         <Navbar/>
-      <div className={`container`}>
+      <form onSubmit={e => handleEncode(e, state)} className={`container`}>
           <div className={`mt-5`}>
             <Header 
               quizTitle={quizTitle}
@@ -66,7 +68,6 @@ export default function Home() {
 
           <div className="form-group">
               <input 
-                type="email" 
                 name="input"
                 value={state.input}
                 className={`${styles.field} form-control border-light`} 
@@ -78,9 +79,9 @@ export default function Home() {
           </div>
           <div className={`pt-4`}></div>
           <div>
-            <Button buttonText={'Execute'} onClick={getRequest}/>
+            <Button buttonText={'Execute'}/>
           </div>
-      </div>
+      </form>
     </div>
   )
 }
