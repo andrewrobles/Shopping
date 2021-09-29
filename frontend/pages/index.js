@@ -18,25 +18,34 @@ const answerKey=['a1', 'b2', 'c3', 'd4', 'e4']
 
 export default function Home() {
   const [state, setState] = useState({
-    // -1 indicates quiz has not started
-    'questionIndex': -1,
-    'quizQuestionData': quizQuestionData,
-    // -1 indicates question has not yet been answered
-    'studentAnswers': Array(quizQuestionData.length).fill(-1),
-    'response': ''
+    'input': ''
   })
 
-  useEffect(() => {
-    const baseUrl = 'http://localhost:8000'
-    fetch(baseUrl + '/encoder/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Origin': 'http://localhost:3000',
-      },
-      body: JSON.stringify({'text': 'tacocat'})
-    }).then(res => res.json()).then(json => alert('Message:' + json.encoded))
-  })
+  // useEffect(() => {
+  //   const baseUrl = 'http://localhost:8000'
+  //   fetch(baseUrl + '/encoder/', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Origin': 'http://localhost:3000',
+  //     },
+  //     body: JSON.stringify({'text': 'tacocat'})
+  //   }).then(res => res.json()).then(json => alert('Message:' + json.encoded))
+  // })
+
+  const handle_change = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setState(prevstate => {
+      const newState = { ...prevstate };
+      newState[name] = value;
+      return newState;
+    });
+  };
+
+  function getRequest(props) {
+    alert('Input state is: ' + state.input)
+  }
 
   
   return (
@@ -56,7 +65,16 @@ export default function Home() {
           />
 
           <div className="form-group">
-              <input type="email" className={`${styles.field} form-control border-light`} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Example: tacocat"/>
+              <input 
+                type="email" 
+                name="input"
+                value={state.input}
+                className={`${styles.field} form-control border-light`} 
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp" 
+                placeholder="Example: tacocat"
+                onChange={handle_change}
+              />
           </div>
           <div className={`pt-4`}></div>
           <div>
@@ -67,9 +85,7 @@ export default function Home() {
   )
 }
 
-function getRequest(props) {
 
-}
 
 function Status(props) {
   const keys = [...Array(props.quizLength).keys()]
