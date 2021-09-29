@@ -22,7 +22,7 @@ def encoder(request):
 @api_view(['POST', 'GET'])
 def decoder(request):
     if request.method == 'POST':
-        return Response({'decode': decode(request.data['values'])})
+        return Response({'decoded': decode(request.data['values'])})
         return Response(request.data)
     elif request.method == 'GET':
         message = {'message': 'Hello, world! Welcome to the weird text format decoder!!!'}

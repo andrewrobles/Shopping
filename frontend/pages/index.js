@@ -18,9 +18,11 @@ const answerKey=['a1', 'b2', 'c3', 'd4', 'e4']
 
 export default function Home() {
   const [state, setState] = useState({
-    'input': ''
+    'input': '',
+    'decodeInput': ''
   })
 
+  
   
   const handleEncode = (e, state) => {
     e.preventDefault()
@@ -32,7 +34,20 @@ export default function Home() {
         'Origin': 'http://localhost:3000',
       },
       body: JSON.stringify({'text': state.input})
-    }).then(res => res.json()).then(json => alert('Decoded value is:' + json.encoded))
+    }).then(res => res.json()).then(json => alert('Encoded value is: ' + json.encoded))
+  }
+
+  const handleDecode = (e, state) => {
+    e.preventDefault()
+    const baseUrl = 'http://localhost:8000'
+    fetch(baseUrl + '/decoder/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Origin': 'http://localhost:3000',
+      },
+      body: JSON.stringify({'values': state.decodeInput != '' ? state.decodeInput.split(",").map(Number): ''})
+    }).then(res => res.json()).then(json => alert('Decoded value is: ' + json.decoded))
   }
 
   const handle_change = e => {
@@ -46,7 +61,7 @@ export default function Home() {
   };
 
   function getRequest(props) {
-    alert('Input state is: ' + state.input)
+    alert('Input state is: ' + state.decodeInput)
   }
 
   
@@ -74,6 +89,35 @@ export default function Home() {
                 id="exampleInputEmail1" 
                 aria-describedby="emailHelp" 
                 placeholder="Example: tacocat"
+                onChange={handle_change}
+              />
+          </div>
+          <div className={`pt-4`}></div>
+          <div>
+            <Button buttonText={'Execute'}/>
+          </div>
+      </form>
+      <form onSubmit={e => handleDecode(e, state)} className={`container`}>
+          <div className={`mt-5`}>
+            <Header 
+              quizTitle={quizTitle}
+              quizDescription={quizDescription}
+              questionIndex={state.questionIndex}
+            />
+          </div>
+          <Status
+              questionIndex={state.questionIndex}
+              quizLength={quizQuestionData.length}
+          />
+
+          <div className="form-group">
+              <input 
+                name="decodeInput"
+                value={state.decodeInput}
+                className={`${styles.field} form-control border-light`} 
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp" 
+                placeholder="Example: 267487694, 125043731"
                 onChange={handle_change}
               />
           </div>
