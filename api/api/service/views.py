@@ -5,28 +5,22 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from api.service.serializers import UserSerializer, GroupSerializer
 
-from api.service.formatting import encode, decode
+from .models import Item
 
 @api_view(['GET'])
 def hello_world(request):
     return Response({'message': 'Hello, world!!'})
 
-@api_view(['POST', 'GET'])
-def encoder(request):
-    if request.method == 'POST':
-        return Response({'encoded': encode(request.data['text'])})
-    elif request.method == 'GET':
-        message = {'message': 'Hello, world! Welcome to the weird text format encoder!!!'}
-        return Response(message)
+@api_view(['POST'])
+def add_item(request):
 
-@api_view(['POST', 'GET'])
-def decoder(request):
-    if request.method == 'POST':
-        return Response({'decoded': decode(request.data['values'])})
-        return Response(request.data)
-    elif request.method == 'GET':
-        message = {'message': 'Hello, world! Welcome to the weird text format decoder!!!'}
-        return Response(message)
+    Item.objects.create(
+        item_name=request.data['itemName'],
+        description=request.data['description'],
+        amount=request.data['amount']
+    )
+
+    return Response(request.data)
 
 class UserViewSet(viewsets.ModelViewSet):
     """
