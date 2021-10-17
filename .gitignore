@@ -3,3 +3,5 @@ api/venv
 *.sqlite3
 client/node_modules
 client/.next
+clientv1/node_modules
+clientv1/.next
