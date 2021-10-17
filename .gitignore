@@ -1,5 +1,5 @@
 *pyc
 api/venv
 *.sqlite3
-frontend/node_modules
-frontend/.next
+client/node_modules
+client/.next
