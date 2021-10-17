@@ -11,7 +11,7 @@ import Results from '../components/Modal/Modal'
 import Button from '../components/Button/Button'
 
 const quizTitle='Weird Text Format Encoder'
-const quizDescription='Type in the word you would like to encode'
+const quizDescription='Your shopping list is empty :('
 const estimatedTime='30 minutes'
 const difficultyLevel='6'
 const answerKey=['a1', 'b2', 'c3', 'd4', 'e4']
@@ -68,39 +68,9 @@ export default function Home() {
   return (
     <div className={`${styles.index}`}>
         <Navbar/>
-      <form onSubmit={e => handleEncode(e, state)} className={`container`}>
-          <div className={`mt-5`}>
-            <Header 
-              quizTitle={quizTitle}
-              quizDescription={quizDescription}
-              questionIndex={state.questionIndex}
-            />
-          </div>
-          <Status
-              questionIndex={state.questionIndex}
-              quizLength={quizQuestionData.length}
-          />
-
-          <div className="form-group">
-              <input 
-                name="input"
-                value={state.input}
-                className={`${styles.field} form-control border-light`} 
-                id="exampleInputEmail1" 
-                aria-describedby="emailHelp" 
-                placeholder="Example: tacocat"
-                onChange={handle_change}
-              />
-          </div>
-          <div className={`pt-4`}></div>
-          <div>
-            <Button buttonText={'Execute'}/>
-          </div>
-      </form>
       <form onSubmit={e => handleDecode(e, state)} className={`container`}>
           <div className={`mt-5`}>
             <Header 
-              quizTitle={quizTitle}
               quizDescription={quizDescription}
               questionIndex={state.questionIndex}
             />
@@ -110,20 +80,9 @@ export default function Home() {
               quizLength={quizQuestionData.length}
           />
 
-          <div className="form-group">
-              <input 
-                name="decodeInput"
-                value={state.decodeInput}
-                className={`${styles.field} form-control border-light`} 
-                id="exampleInputEmail1" 
-                aria-describedby="emailHelp" 
-                placeholder="Example: 267487694, 125043731"
-                onChange={handle_change}
-              />
-          </div>
-          <div className={`pt-4`}></div>
+          
           <div>
-            <Button buttonText={'Execute'}/>
+            <Button buttonText={'Add your first item'}/>
           </div>
       </form>
     </div>
