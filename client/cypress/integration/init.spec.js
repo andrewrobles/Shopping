@@ -8,6 +8,6 @@ describe('Cypress', () => {
     })
 
     it('displays add your first item button when no items have been added yet', () => {
-        cy.get('.blue-button').should('exist')
+        cy.get('button').should('exist')
     })
 })
