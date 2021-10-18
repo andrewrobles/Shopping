@@ -22,6 +22,20 @@ def add_item(request):
 
     return Response(request.data)
 
+@api_view(['GET'])
+def get_items(requests):
+    response_body = []
+
+    # Add items from database to response body
+    for curr_item in Item.objects.all():
+        response_body.append({
+            'itemName': curr_item.item_name,
+            'description': curr_item.description,
+            'amount': curr_item.amount
+        })
+
+    return Response(response_body)
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
