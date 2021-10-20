@@ -1,11 +1,32 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import { useState } from 'react';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const [state, setState] = useState({ show: true })
+
+  const toggleModal = () => {
+    setState({
+      show: !state.show
+    })
+  }
+
   return (
     <div className={styles.container}>
-      <button className={styles.blueButton}>Add your first item</button>
+      <button id={'add-item-button'} className={styles.blueButton} onClick={ () => { toggleModal() }}>Add your first item</button>
+      <Modal show={state.show} hide={toggleModal}/>
     </div>
   )
+}
+
+function Modal(props) {
+    if (!props.show){
+      return null
+    } else return (
+      <div>
+        <button onClick={() => props.hide()}>Hide</button>
+        <div>Hello Modal</div>
+        <input></input>
+      </div>
+      
+    )
 }

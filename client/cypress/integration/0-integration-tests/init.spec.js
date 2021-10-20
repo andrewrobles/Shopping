@@ -10,4 +10,9 @@ describe('Cypress', () => {
     it('displays add your first item button when no items have been added yet', () => {
         cy.get('button').should('exist')
     })
+
+    it('opens form to add item', () => {
+        cy.contains('Add first item').click()
+        // cy.get('input').should('exist')
+    })
 })
