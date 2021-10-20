@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  const [state, setState] = useState({ show: true })
+  const [state, setState] = useState({ show: false })
 
   const toggleModal = () => {
     setState({

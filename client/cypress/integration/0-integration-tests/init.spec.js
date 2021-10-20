@@ -12,7 +12,7 @@ describe('Cypress', () => {
     })
 
     it('opens form to add item', () => {
-        cy.contains('Add first item').click()
-        // cy.get('input').should('exist')
+        cy.contains('Add your first item').click()
+        cy.get('input').should('exist')
     })
 })
