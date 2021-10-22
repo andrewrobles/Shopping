@@ -11,30 +11,29 @@ from .models import Item
 def hello_world(request):
     return Response({'message': 'Hello, world!!'})
 
-@api_view(['POST'])
-def add_item(request):
+@api_view(['GET', 'POST'])
+def item(request):
+    if request.method == 'GET':
+        response_body = []
 
-    Item.objects.create(
-        item_name=request.data['itemName'],
-        description=request.data['description'],
-        amount=request.data['amount']
-    )
+        # Add items from database to response body
+        for curr_item in Item.objects.all():
+            response_body.append({
+                'itemName': curr_item.item_name,
+                'description': curr_item.description,
+                'amount': curr_item.amount
+            })
 
-    return Response(request.data)
+        return Response(response_body)
 
-@api_view(['GET'])
-def get_items(requests):
-    response_body = []
+    elif request.method == 'POST':
+        Item.objects.create(
+            item_name=request.data['itemName'],
+            description=request.data['description'],
+            amount=request.data['amount']
+        )
 
-    # Add items from database to response body
-    for curr_item in Item.objects.all():
-        response_body.append({
-            'itemName': curr_item.item_name,
-            'description': curr_item.description,
-            'amount': curr_item.amount
-        })
-
-    return Response(response_body)
+        return Response(request.data)
 
 class UserViewSet(viewsets.ModelViewSet):
     """

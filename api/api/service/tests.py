@@ -25,7 +25,7 @@ class AddItemTestCase(TestCase):
         }
 
         # Make API call for adding an item
-        response = self.factory.post('/item/add/', request_body, format='json')
+        response = self.factory.post('/item/', request_body, format='json')
         
         # Check that response body was correct
         self.assertEqual(response.status_code, 200)
