@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -8,6 +8,16 @@ export default function Home() {
     setState({
       show: !state.show
     })
+  }
+
+  useEffect(() => {
+    get_items()
+  })
+
+  const get_items = () => {
+    fetch('http://localhost:8000/item/')
+  .then(response => response.json())
+  .then(data => console.log(data));
   }
 
   return (
@@ -37,7 +47,16 @@ function Modal(props) {
 
     const addItem = () => {
       const message = state.itemName + state.description + state.amount
-      alert(message)
+      fetch('http://localhost:8000/item/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(state)
+      })
+      .then(response => response.json())
+      .then(data => console.log(data));
     }
    
 
