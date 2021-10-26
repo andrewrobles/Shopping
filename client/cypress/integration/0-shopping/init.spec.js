@@ -1,4 +1,8 @@
 describe('Cypress', () => {   
+    beforeEach(() => {
+        cy.exec('./clear.sh')
+    })
+
     it('is working', () => {     
         expect(true).to.equal(true)   
     }) 
