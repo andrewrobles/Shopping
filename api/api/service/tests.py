@@ -29,7 +29,7 @@ class AddItemTestCase(TestCase):
         
         # Check that response body was correct
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, request_body)
+        self.assertEqual(response.data, [request_body])
 
         # Check that an item was created
         items_count = Item.objects.all().count()
