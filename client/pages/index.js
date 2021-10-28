@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import styles from '../styles/Home.module.css'
 
+import Items from '../components/items.js'
+
 export default function Home() {
   const [state, setState] = useState({ 
     show: false,
@@ -21,41 +23,6 @@ export default function Home() {
       <Items items={state.items}/>
     </div>
   )
-}
-
-function Items(props) {
-  const [state, setState] = useState({
-    items: []
-  })
-
-  useEffect(() => {
-    getItems()
-  })
-
-  const getItems = () => {
-    fetch('http://localhost:8000/item/')
-    .then(response => response.json())
-    .then(data => saveItems(data));
-  }
-
-  const saveItems = (items) => {
-    if (items != state.items) {
-      setState({
-        items: items
-      })
-    }
-  }
-
-  const listItems = state.items.map((item) =>
-    <li>{item.itemName}</li>
-  );
-  console.log(listItems)
-   
-  return (
-    <div>
-      {listItems}
-    </div>
-  );
 }
 
 function Modal(props) {

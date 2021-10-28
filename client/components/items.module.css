@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+
+.item {
+    border: 0.5px solid #D5DFE9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin: 12px;
+}
+
+.itemName {
+
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    /* identical to box height, or 125% */
+    letter-spacing: -1.30385e-09px;
+    color: #000000;
+    padding: 2px;
+}
+
+.itemDescription {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -1.30385e-09px;
+    color: #7D7A7A;
+    padding: 2px;
+}
+
+.itemContent {
+    padding: 20px;
+    
+}
+
