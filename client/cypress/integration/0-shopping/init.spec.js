@@ -35,6 +35,6 @@ describe('Cypress', () => {
         cy.contains('Add Item').should('not.exist')
 
         // Check that item was added to the page
-        cy.get('Bananas').should('exist')
+        cy.contains('Bananas').should('exist')
     })
 })

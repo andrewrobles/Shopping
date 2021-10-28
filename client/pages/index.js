@@ -7,28 +7,10 @@ export default function Home() {
     items: []
   })
 
-  // useEffect(() => {
-  //   getItems()
-  // })
-
   const toggleModal = () => {
     setState({
       show: !state.show,
       items: state.items
-    })
-    // getItems()
-  }
-
-  const getItems = () => {
-    fetch('http://localhost:8000/item/')
-  .then(response => response.json())
-  .then(data => saveItems(data));
-  }
-
-  const saveItems = (items) => {
-    setState({
-      show: state.show,
-      items: items
     })
   }
 
@@ -42,7 +24,29 @@ export default function Home() {
 }
 
 function Items(props) {
-  const listItems = props.items.map((item) =>
+  const [state, setState] = useState({
+    items: []
+  })
+
+  useEffect(() => {
+    getItems()
+  })
+
+  const getItems = () => {
+    fetch('http://localhost:8000/item/')
+    .then(response => response.json())
+    .then(data => saveItems(data));
+  }
+
+  const saveItems = (items) => {
+    if (items != state.items) {
+      setState({
+        items: items
+      })
+    }
+  }
+
+  const listItems = state.items.map((item) =>
     <li>{item.itemName}</li>
   );
   console.log(listItems)
