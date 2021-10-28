@@ -1,0 +1,15 @@
+.modal {
+    margin-top: 80px;
+}
+
+.blueButton {
+    font-family: 'Nunito', sans-serif;
+    background-color: #1871E8;
+    border-radius: 4px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    height: 36px;
+    width: 151px; 
+    margin-left: 12px;
+  }
