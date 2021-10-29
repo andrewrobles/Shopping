@@ -12,5 +12,6 @@ urlpatterns = [
     path('users', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('item/', views.item, name='item'),
-    path('item/delete/', views.delete_item, name='delete-item')
+    path('item/delete/', views.delete_item, name='delete-item'),
+    path('item/edit/', views.edit_item, name='edit-item')
 ]

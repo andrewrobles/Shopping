@@ -8,6 +8,16 @@ from api.service.serializers import UserSerializer, GroupSerializer
 from .models import Item
 
 @api_view(['POST'])
+def edit_item(request):
+    item = Item.objects.get(id=request.data['id'])
+    item.item_name = request.data['itemName']
+    item.description = request.data['description']
+    item.amount = request.data['amount']
+    item.save()
+
+    return Response()
+
+@api_view(['POST'])
 def delete_item(request):
     Item.objects.get(id=request.data['id']).delete()
     return Response()
