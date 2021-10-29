@@ -7,16 +7,6 @@ class AddItemTestCase(TestCase):
     def setUp(self):
         self.factory = APIClient()
 
-    def test_hello_world(self):
-        response_body = {
-            'message': 'Hello, world!!'
-        }
-
-        response = self.factory.get('/hello-world/', format='json')
-
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, response_body)
-
     def test_add_item(self):
         request_body = {
             'itemName': 'ITEM_NAME',
@@ -42,7 +32,7 @@ class AddItemTestCase(TestCase):
         self.assertEqual(new_item.amount, request_body['amount'])
 
 
-class GetItemsTestCase(TestCase):
+class GetRemoveItemsTestCase(TestCase):
     def setUp(self):
         self.factory = APIClient()
         self.expected_response_body = []
@@ -72,10 +62,15 @@ class GetItemsTestCase(TestCase):
         # Check that response body was correct
         self.assertEqual(actual_response_body.status_code, 200)
         self.assertEqual(actual_response_body.data, self.expected_response_body)
-        
 
-        
+    def test_delete_item(self):
+        delete_id = Item.objects.all()[1].id
 
+        # Make API call for removing items
+        request_body = {'id': str(delete_id)}
+        response = self.factory.post('/item/delete/', request_body, format='json')
+        self.assertEqual(response.status_code, 200)
 
-
-        
+        # Verify that there is one less item in the database
+        num_items = len(Item.objects.all())
+        self.assertEqual(2, num_items)

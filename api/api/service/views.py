@@ -7,9 +7,10 @@ from api.service.serializers import UserSerializer, GroupSerializer
 
 from .models import Item
 
-@api_view(['GET'])
-def hello_world(request):
-    return Response({'message': 'Hello, world!!'})
+@api_view(['POST'])
+def delete_item(request):
+    Item.objects.get(id=request.data['id']).delete()
+    return Response()
 
 @api_view(['GET', 'POST'])
 def item(request):
