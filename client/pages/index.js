@@ -22,8 +22,6 @@ export default function Home() {
     <div className={styles.container}>
       <Navbar />
       <Modal />
-      {/* <button id={'add-item-button'} className={styles.blueButton} onClick={ () => { toggleModal() }}>Add your first item</button> */}
-      {/* <Modal show={state.show} hide={toggleModal}/> */}
       <Items items={state.items}/>
     </div>
   )

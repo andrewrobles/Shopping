@@ -36,5 +36,9 @@ describe('Cypress', () => {
 
         // Check that item was added to the page
         cy.contains('Bananas').should('exist')
+
+        // Delete item
+        cy.get('button[name="deleteItem"]').click()
+        cy.contains('Bananas').should('not.exist')
     })
 })
