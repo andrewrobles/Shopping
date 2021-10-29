@@ -16,10 +16,6 @@ class AddItemTestCase(TestCase):
 
         # Make API call for adding an item
         response = self.factory.post('/item/', request_body, format='json')
-        
-        # Check that response body was correct
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, [request_body])
 
         # Check that an item was created
         items_count = Item.objects.all().count()
@@ -60,8 +56,17 @@ class GetRemoveItemsTestCase(TestCase):
         actual_response_body = self.factory.get('/item/', format='json')
 
         # Check that response body was correct
+        expected = {1, 2, 3}
+        actual = {item['id'] for item in actual_response_body.data}
+        self.assertEqual(expected, actual)
+
+        for item in actual_response_body.data:
+            item.pop('id')
+
         self.assertEqual(actual_response_body.status_code, 200)
         self.assertEqual(actual_response_body.data, self.expected_response_body)
+
+
 
     def test_delete_item(self):
         delete_id = Item.objects.all()[1].id

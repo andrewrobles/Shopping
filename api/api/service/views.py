@@ -29,7 +29,8 @@ def item(request):
         response_body.append({
             'itemName': curr_item.item_name,
             'description': curr_item.description,
-            'amount': curr_item.amount
+            'amount': curr_item.amount,
+            'id': curr_item.id
         })
 
     return Response(response_body)
