@@ -1,22 +1,20 @@
 import {useState} from 'react'
 import styles from './modal.module.css'
 
-export default function Modal() {
+export default function Modal(props) {
     const [state, setState] = useState({ 
         show: false,
-        items: []
       })
     
       const toggleModal = () => {
         setState({
           show: !state.show,
-          items: state.items
         })
       }
 
     return <div className={styles.modal}>
         <button id={'add-item-button'} className={styles.blueButton} onClick={ () => { toggleModal() }}>Add your first item</button>
-        <Form show={state.show} hide={toggleModal}/>
+        <Form show={state.show} hide={toggleModal} setItems={props.setItems}/>
     </div>
 }
 
@@ -47,7 +45,7 @@ function Form(props) {
         body: JSON.stringify(state)
       })
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => props.setItems(data));
   
       props.hide()
     }

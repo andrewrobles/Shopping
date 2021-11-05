@@ -15,14 +15,27 @@ export default function Home() {
     setState({
       show: !state.show,
       items: state.items
+    })  
+  }
+
+  const setItems = (items) => {
+    setState({
+      show: state.show,
+      items: items
     })
+  }
+
+  const updateItems = () => {
+    fetch('http://localhost:8000/item/')
+    .then(response => response.json())
+    .then(data => setItems(data));
   }
 
   return (
     <div className={styles.container}>
       <Navbar />
-      <Modal />
-      <Items items={state.items}/>
+      <Modal setItems={setItems}/>
+      <Items items={state.items} updateItems={updateItems}/>
     </div>
   )
 }

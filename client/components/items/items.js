@@ -1,31 +1,13 @@
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 import styles from './items.module.css'
 
-export default function Items(props) {
-    const [state, setState] = useState({
-      items: []
-    })
-  
+export default function Items(props) {  
     useEffect(() => {
-      getItems()
-    })
+      props.updateItems()
+    }, [])
   
-    const getItems = () => {
-      fetch('http://localhost:8000/item/')
-      .then(response => response.json())
-      .then(data => saveItems(data));
-    }
-  
-    const saveItems = (items) => {
-      if (items != state.items) {
-        setState({
-          items: items
-        })
-      }
-    }
-  
-    const listItems = state.items.map((item) =>
-      <Item item={item}/>
+    const listItems = props.items.map((item) =>
+      <Item item={item} updateItems={props.updateItems}/>
     );
     console.log(listItems)
      
@@ -47,7 +29,7 @@ function Item(props) {
         body: JSON.stringify(request_body)
       })
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => props.updateItems());
     }
     return <div className={styles.item}>
         <div className={styles.itemContent}>
